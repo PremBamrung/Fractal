@@ -25,9 +25,10 @@ def mandelbrot(Re,Im,max_iter):
         if(z.real*z.real+z.imag*z.imag)>=4:
             return i
     return max_iter
- 
-columns=2000
-rows=2000
+
+dim=2000 
+columns=dim
+rows=dim
 iterration=1000
 result=numpy.zeros([rows,columns])
 
@@ -38,6 +39,8 @@ def main():
                 for column_index, Im in enumerate(numpy.linspace(-1,1,num=columns)):
                         result[row_index,column_index]=mandelbrot(Re,Im,iterration)
 
+print("Dimensions :",dim," * ",dim)
+print("Itération : ",iterration)
 main()
 
 plt.figure(dpi=150)

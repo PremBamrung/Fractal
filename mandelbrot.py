@@ -2,6 +2,8 @@ import numpy
 from numba import jit
 import matplotlib.pyplot as plt
 import time
+from tqdm import tqdm
+
 
 def time_it(func):
     def wrapper(*args, **kwargs):
@@ -32,7 +34,7 @@ result=numpy.zeros([rows,columns])
 @time_it
 #@jit
 def main():
-        for row_index, Re in enumerate(numpy.linspace(-2,1, num=rows)):
+        for row_index, Re in enumerate(tqdm(numpy.linspace(-2,1, num=rows))):
                 for column_index, Im in enumerate(numpy.linspace(-1,1,num=columns)):
                         result[row_index,column_index]=mandelbrot(Re,Im,iterration)
 
